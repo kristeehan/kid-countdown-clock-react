@@ -18,8 +18,8 @@ function Clock() {
 
   useEffect(() => {
     setSpinnerStyle({ animation: getRotaRule(`300s`) });
-    setFillerStyle({ animation: getOpaRule(`300s`) });
-    setMaskStyle({ animation: getOpaRule(`300s`, true) });
+    setFillerStyle({ animation: getOpaRule(`300s`, true) });
+    setMaskStyle({ animation: getOpaRule(`300s`) });
   }, []);
 
   return (
