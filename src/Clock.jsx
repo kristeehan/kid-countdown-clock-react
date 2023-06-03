@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import ClockControls from "./ClockControls";
 import { getRotaRule, getOpaRule } from "./helpers";
 
@@ -15,12 +15,19 @@ function Clock() {
   const [spinnerStyle, setSpinnerStyle] = useState({});
   const [fillerStyle, setFillerStyle] = useState({});
   const [maskStyle, setMaskStyle] = useState({});
+  let initialRender = useRef(true);
 
   useEffect(() => {
-    setSpinnerStyle({ animation: getRotaRule(`300s`) });
-    setFillerStyle({ animation: getOpaRule(`300s`, true) });
-    setMaskStyle({ animation: getOpaRule(`300s`) });
-  }, []);
+    if (!initialRender.current) {
+      if (clockState === CLOCK_STATES.PLAYING) {
+        setSpinnerStyle({ animation: getRotaRule(`300s`) });
+        setFillerStyle({ animation: getOpaRule(`300s`, true) });
+        setMaskStyle({ animation: getOpaRule(`300s`) });
+      }
+    } else {
+      initialRender.current = false;
+    }
+  }, [clockState]);
 
   return (
     <div id="clock" data-test-current-state={clockState}>
