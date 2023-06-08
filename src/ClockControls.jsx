@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { CLOCK_STATES } from "./constants";
 
 function ClockControls({ setClockState }) {
@@ -31,7 +30,7 @@ function ClockControls({ setClockState }) {
             id="reset"
             onClick={(e) => {
               e.preventDefault();
-              setClockState(CLOCK_STATES.PAUSED);
+              setClockState(CLOCK_STATES.INITIAL);
             }}
           >
             Reset

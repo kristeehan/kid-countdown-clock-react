@@ -10,11 +10,11 @@ const CLOCK_STATES = Object.freeze({
 });
 
 function Clock() {
-  // break mask, filler, spinner into components?
   const [clockState, setClockState] = useState(CLOCK_STATES.INITIAL);
   const [spinnerStyle, setSpinnerStyle] = useState({});
   const [fillerStyle, setFillerStyle] = useState({});
   const [maskStyle, setMaskStyle] = useState({});
+
   let initialRender = useRef(true);
 
   useEffect(() => {
@@ -29,6 +29,12 @@ function Clock() {
         setSpinnerStyle({ animation: getRotaRule(`300s`, true) });
         setFillerStyle({ animation: getOpaRule(`300s`, true, true) });
         setMaskStyle({ animation: getOpaRule(`300s`, false, true) });
+      }
+
+      if (clockState === CLOCK_STATES.INITIAL) {
+        setSpinnerStyle({ animation: null });
+        setFillerStyle({ animation: null });
+        setMaskStyle({ animation: null });
       }
     } else {
       initialRender.current = false;
