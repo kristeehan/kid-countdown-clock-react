@@ -24,6 +24,12 @@ function Clock() {
         setFillerStyle({ animation: getOpaRule(`300s`, true) });
         setMaskStyle({ animation: getOpaRule(`300s`) });
       }
+
+      if (clockState === CLOCK_STATES.PAUSED) {
+        setSpinnerStyle({ animation: getRotaRule(`300s`, true) });
+        setFillerStyle({ animation: getOpaRule(`300s`, true, true) });
+        setMaskStyle({ animation: getOpaRule(`300s`, false, true) });
+      }
     } else {
       initialRender.current = false;
     }
