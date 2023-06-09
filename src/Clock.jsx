@@ -18,6 +18,18 @@ function Clock() {
   let initialRender = useRef(true);
 
   useEffect(() => {
+    const spinner = document.querySelector(".spinner");
+    function onAnimationEnd() {
+      // TODO put animation end stuff here
+    }
+    spinner.addEventListener("animationend", onAnimationEnd);
+
+    return () => {
+      spinner.removeEventListener("animationend", onAnimationEnd);
+    };
+  }, []);
+
+  useEffect(() => {
     if (!initialRender.current) {
       if (clockState === CLOCK_STATES.PLAYING) {
         setSpinnerStyle({ animation: getRotaRule(`300s`) });
