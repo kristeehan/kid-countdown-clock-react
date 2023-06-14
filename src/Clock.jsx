@@ -54,13 +54,15 @@ function Clock() {
   }, [clockState]);
 
   return (
-    <div id="clock" data-test-current-state={clockState}>
-      <div className="wrapper">
-        <div className="spinner pie" style={spinnerStyle}></div>
-        <div className="filler pie" style={fillerStyle}></div>
-        <div className="mask" style={maskStyle}></div>
+    <div id="clock-container">
+      <div id="clock" data-test-current-state={clockState}>
+        <div className="wrapper">
+          <div className="spinner pie" style={spinnerStyle}></div>
+          <div className="filler pie" style={fillerStyle}></div>
+          <div className="mask" style={maskStyle}></div>
+        </div>
+        <ClockControls setClockState={setClockState} />{" "}
       </div>
-      <ClockControls setClockState={setClockState} />{" "}
     </div>
   );
 }
