@@ -1,17 +1,22 @@
+// TODO change this to use a controlled form
+
 function Settings({ setTimeInMinutes }) {
   return (
     <div>
       <h3>Settings</h3>
       <ul>
         <li>
-          Time in minutes:{" "}
+          Time in minutes:
           <input
-            type="text"
+            type="number"
+            value={setTimeInMinutes[0]}
+            min="1"
             onChange={(e) => {
               e.preventDefault();
               let value = parseInt(e.target.value);
-              console.log(value);
-              setTimeInMinutes(value);
+              if (typeof value === "number" && !isNaN(value)) {
+                setTimeInMinutes[1](value);
+              }
             }}
           />
         </li>

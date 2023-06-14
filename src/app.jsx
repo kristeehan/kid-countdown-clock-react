@@ -17,7 +17,9 @@ function KidCountDownClock() {
         <Route path="/" element={<Clock timeInMinutes={timeInMinutes} />} />
         <Route
           path="/settings"
-          element={<Settings setTimeInMinutes={setTimeInMinutes} />}
+          element={
+            <Settings setTimeInMinutes={[timeInMinutes, setTimeInMinutes]} />
+          }
         />
       </Routes>
       <Link to="/settings">Settings</Link>
