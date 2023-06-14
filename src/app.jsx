@@ -5,7 +5,7 @@ import Settings from "./Settings";
 
 function KidCountDownClock() {
   const headline = `When it's all red, it's time for bed!`;
-  const defaultTime = 5;
+  const defaultTime = 1;
   return (
     <BrowserRouter>
       <h1>

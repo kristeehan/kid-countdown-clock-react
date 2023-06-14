@@ -19,3 +19,7 @@ export function getMSfromString(string) {
   const number = string.split("s")[0];
   return number * 1000;
 }
+
+export function convertMinutesToSeconds(timeInMinutes) {
+  return timeInMinutes * 60;
+}
