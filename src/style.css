@@ -25,10 +25,10 @@ h1 {
   * {
     box-sizing: border-box;
   }
+}
 
-  &.time-over {
-    background-color: red;
-  }
+.wrapper.time-over {
+  background-color: red;
 }
 
 .pie {

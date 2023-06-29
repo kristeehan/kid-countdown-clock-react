@@ -21,7 +21,7 @@ function Clock({ timeInMinutes }) {
   useEffect(() => {
     const spinner = document.querySelector(".spinner");
     function onAnimationEnd() {
-      // TODO put animation end stuff here
+      setClockState(CLOCK_STATES.OVER);
     }
     spinner.addEventListener("animationend", onAnimationEnd);
 
@@ -44,7 +44,10 @@ function Clock({ timeInMinutes }) {
         setMaskStyle({ animation: getOpaRule(timeCSS, false, true) });
       }
 
-      if (clockState === CLOCK_STATES.INITIAL) {
+      if (
+        clockState === CLOCK_STATES.INITIAL ||
+        clockState === CLOCK_STATES.OVER
+      ) {
         setSpinnerStyle({ animation: null });
         setFillerStyle({ animation: null });
         setMaskStyle({ animation: null });
@@ -52,12 +55,16 @@ function Clock({ timeInMinutes }) {
     } else {
       initialRender.current = false;
     }
-  }, [clockState]);
+  }, [clockState, timeCSS]);
 
   return (
     <div id="clock-container">
       <div id="clock" data-test-current-state={clockState}>
-        <div className="wrapper">
+        <div
+          className={`wrapper ${
+            clockState === CLOCK_STATES.OVER ? "time-over" : ""
+          }`}
+        >
           <div className="spinner pie" style={spinnerStyle}></div>
           <div className="filler pie" style={fillerStyle}></div>
           <div className="mask" style={maskStyle}></div>
