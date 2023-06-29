@@ -11,7 +11,9 @@ function KidCountDownClock() {
   return (
     <BrowserRouter>
       <h1>
-        <Link to="/">{headline}</Link>
+        <Link to="/" className="title">
+          {headline}
+        </Link>
       </h1>
       <Routes>
         <Route path="/" element={<Clock timeInMinutes={timeInMinutes} />} />
