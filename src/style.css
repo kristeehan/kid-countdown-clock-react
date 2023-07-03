@@ -1,3 +1,13 @@
+/* using border-box model -- see https://frontendmasters.github.io/bootcamp/layout#box-model-types for explanation */
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 body {
   margin: 5% 0;
   padding: 0;

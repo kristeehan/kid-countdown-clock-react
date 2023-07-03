@@ -8,14 +8,15 @@ function Settings({ setTimeInMinutes }) {
         <li>
           Time in minutes:
           <input
-            type="number"
+            type="text"
             value={setTimeInMinutes[0]}
-            min="1"
             onChange={(e) => {
               e.preventDefault();
               let value = parseInt(e.target.value);
               if (typeof value === "number" && !isNaN(value)) {
                 setTimeInMinutes[1](value);
+              } else {
+                setTimeInMinutes[1](0);
               }
             }}
           />

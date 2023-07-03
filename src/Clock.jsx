@@ -18,7 +18,7 @@ function Clock({ timeInMinutes }) {
 
   let initialRender = useRef(true);
 
-  useEffect(() => {
+  useEffect(function addEventListeners() {
     const spinner = document.querySelector(".spinner");
     function onAnimationEnd() {
       setClockState(CLOCK_STATES.OVER);
@@ -30,32 +30,35 @@ function Clock({ timeInMinutes }) {
     };
   }, []);
 
-  useEffect(() => {
-    if (!initialRender.current) {
-      if (clockState === CLOCK_STATES.PLAYING) {
-        setSpinnerStyle({ animation: getRotaRule(timeCSS) });
-        setFillerStyle({ animation: getOpaRule(timeCSS, true) });
-        setMaskStyle({ animation: getOpaRule(timeCSS) });
-      }
+  useEffect(
+    function animationEffect() {
+      if (!initialRender.current) {
+        if (clockState === CLOCK_STATES.PLAYING) {
+          setSpinnerStyle({ animation: getRotaRule(timeCSS) });
+          setFillerStyle({ animation: getOpaRule(timeCSS, true) });
+          setMaskStyle({ animation: getOpaRule(timeCSS) });
+        }
 
-      if (clockState === CLOCK_STATES.PAUSED) {
-        setSpinnerStyle({ animation: getRotaRule(timeCSS, true) });
-        setFillerStyle({ animation: getOpaRule(timeCSS, true, true) });
-        setMaskStyle({ animation: getOpaRule(timeCSS, false, true) });
-      }
+        if (clockState === CLOCK_STATES.PAUSED) {
+          setSpinnerStyle({ animation: getRotaRule(timeCSS, true) });
+          setFillerStyle({ animation: getOpaRule(timeCSS, true, true) });
+          setMaskStyle({ animation: getOpaRule(timeCSS, false, true) });
+        }
 
-      if (
-        clockState === CLOCK_STATES.INITIAL ||
-        clockState === CLOCK_STATES.OVER
-      ) {
-        setSpinnerStyle({ animation: null });
-        setFillerStyle({ animation: null });
-        setMaskStyle({ animation: null });
+        if (
+          clockState === CLOCK_STATES.INITIAL ||
+          clockState === CLOCK_STATES.OVER
+        ) {
+          setSpinnerStyle({ animation: null });
+          setFillerStyle({ animation: null });
+          setMaskStyle({ animation: null });
+        }
+      } else {
+        initialRender.current = false;
       }
-    } else {
-      initialRender.current = false;
-    }
-  }, [clockState, timeCSS]);
+    },
+    [clockState, timeCSS]
+  );
 
   return (
     <div id="clock-container">
