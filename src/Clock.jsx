@@ -72,7 +72,7 @@ function Clock({ timeInMinutes }) {
           <div className="filler pie" style={fillerStyle}></div>
           <div className="mask" style={maskStyle}></div>
         </div>
-        <ClockControls setClockState={setClockState} />{" "}
+        <ClockControls setClockState={setClockState} clockState={clockState} />{" "}
       </div>
     </div>
   );
