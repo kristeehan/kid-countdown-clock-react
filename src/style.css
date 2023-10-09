@@ -31,10 +31,10 @@ h1 {
   background: green;
   border-radius: 50%;
   box-sizing: border-box;
+}
 
-  * {
-    box-sizing: border-box;
-  }
+.wrapper * {
+  box-sizing: border-box;
 }
 
 .wrapper.time-over {
