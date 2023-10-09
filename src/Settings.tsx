@@ -6,9 +6,9 @@ interface SettingsProps {
 
 function Settings({ setTimeInMinutes }: SettingsProps) {
   return (
-    <div>
+    <div className="container">
       <h3>Settings</h3>
-      <ul>
+      <ul className="settings-list">
         <li>
           Time in minutes:
           <input

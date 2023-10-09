@@ -38,7 +38,7 @@ function Clock({ timeInMinutes }: ClockProps) {
 
   const timeCSS = `${convertMinutesToSeconds(timeInMinutes)}s`;
 
-  const initialRender = useRef(true);
+  const initialRender: React.MutableRefObject<boolean> = useRef(true);
 
   useEffect(function addEventListeners() {
     const spinner = document.querySelector(".spinner");
@@ -83,7 +83,7 @@ function Clock({ timeInMinutes }: ClockProps) {
   );
 
   return (
-    <div id="clock-container">
+    <div id="clock-container" className="container">
       <div id="clock" data-test-current-state={clockState}>
         <div
           className={`wrapper ${

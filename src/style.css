@@ -1,4 +1,3 @@
-/* using border-box model -- see https://frontendmasters.github.io/bootcamp/layout#box-model-types for explanation */
 html {
   box-sizing: border-box;
 }
@@ -17,8 +16,7 @@ h1 {
   text-align: center;
 }
 
-#clock-container,
-#clock-controls {
+.container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,4 +117,10 @@ h1 {
 .footer a:hover {
   text-decoration: underline;
   font-weight: bold;
+}
+
+.settings-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
