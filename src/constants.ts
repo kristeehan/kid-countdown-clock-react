@@ -13,3 +13,6 @@ export const CLOCK_STATES: ClockStates = Object.freeze({
   PLAYING: "PLAYING",
   OVER: "OVER",
 });
+
+export const DEFAULT_CLOCK_TIME_CSS = "300s"; // 5 minutes
+export const DEFAULT_CLOCK_TIME = 5; // 5 minutes

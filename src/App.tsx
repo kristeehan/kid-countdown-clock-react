@@ -1,12 +1,13 @@
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import { useState } from "react";
+import { DEFAULT_CLOCK_TIME } from "./constants";
 import Clock from "./Clock";
 import Settings from "./Settings";
 
 function KidCountDownClock() {
   const headline = `When it's all red, it's time for bed!`;
-  const defaultTime = 5;
+  const defaultTime = DEFAULT_CLOCK_TIME;
   const [timeInMinutes, setTimeInMinutes]: [
     number,
     React.Dispatch<React.SetStateAction<number>>

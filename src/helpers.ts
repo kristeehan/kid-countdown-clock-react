@@ -1,5 +1,4 @@
-export const DEFAULT_CLOCK_TIME = "300s";
-
+import { DEFAULT_CLOCK_TIME_CSS } from "./constants";
 /**
  *  Returns a string that can be used as a CSS animation rule
  * @param {string} time - The time the animation should take
@@ -7,7 +6,7 @@ export const DEFAULT_CLOCK_TIME = "300s";
  * @returns {string} - A string that can be used as a CSS animation rule
  */
 export function getRotaRule(
-  time: string = DEFAULT_CLOCK_TIME,
+  time: string = DEFAULT_CLOCK_TIME_CSS,
   pause = false
 ): string {
   return `rota ${time} linear 1` + (pause ? ` paused` : "");
@@ -21,7 +20,7 @@ export function getRotaRule(
  * @returns {string} - A string that can be used as a CSS animation rule
  */
 export function getOpaRule(
-  time: string = DEFAULT_CLOCK_TIME,
+  time: string = DEFAULT_CLOCK_TIME_CSS,
   reverse = false,
   pause = false
 ): string {
@@ -29,16 +28,6 @@ export function getOpaRule(
     return `opa ${time} steps(1, end) 1 reverse` + (pause ? ` paused` : "");
   }
   return `opa ${time} steps(1, end) 1` + (pause ? ` paused` : "");
-}
-
-/**
- * Returns number of milliseconds in a string
- * @param {string} string - A string in the format of "300s"
- * @returns {number} - The number of milliseconds in the string
- */
-export function getMSfromString(string: string): number {
-  const number: number = parseInt(string.split("s")[0], 10);
-  return number * 1000;
 }
 
 /**
