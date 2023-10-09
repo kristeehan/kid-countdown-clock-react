@@ -28,7 +28,10 @@ function KidCountDownClock() {
           }
         />
       </Routes>
-      <Link to="/settings">Settings</Link>
+      <div className="footer">
+        <Link to="/settings">Settings</Link>
+        <Link to="/">Home</Link>
+      </div>
     </BrowserRouter>
   );
 }

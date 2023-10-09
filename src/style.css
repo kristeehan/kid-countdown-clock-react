@@ -101,3 +101,22 @@ h1 {
 .minutes {
   width: 2rem;
 }
+
+.footer {
+  width: 100%;
+  padding: 4px 0;
+  margin: 4px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.footer a {
+  margin: 0 4px;
+  text-decoration: none;
+  color: black;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
