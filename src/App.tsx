@@ -7,7 +7,10 @@ import Settings from "./Settings";
 function KidCountDownClock() {
   const headline = `When it's all red, it's time for bed!`;
   const defaultTime = 5;
-  const [timeInMinutes, setTimeInMinutes] = useState(defaultTime);
+  const [timeInMinutes, setTimeInMinutes]: [
+    number,
+    React.Dispatch<React.SetStateAction<number>>
+  ] = useState(defaultTime);
   return (
     <BrowserRouter>
       <h1>

@@ -1,18 +1,35 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, CSSProperties } from "react";
 import ClockControls from "./ClockControls";
 import { getRotaRule, getOpaRule, convertMinutesToSeconds } from "./helpers";
-import { CLOCK_STATES } from "./constants";
+import { CLOCK_STATES, ClockState } from "./constants";
 
 interface ClockProps {
   timeInMinutes: number;
 }
 
+interface AnimationStyle extends CSSProperties {
+  animation?: string;
+}
+
 function Clock({ timeInMinutes }: ClockProps) {
-  const [clockState, setClockState] = useState(CLOCK_STATES.INITIAL);
-  const [spinnerStyle, setSpinnerStyle] = useState({});
-  const [fillerStyle, setFillerStyle] = useState({});
-  const [maskStyle, setMaskStyle] = useState({});
-  const timeCSS = `${convertMinutesToSeconds(timeInMinutes)}s`;
+  const [clockState, setClockState]: [
+    ClockState,
+    React.Dispatch<React.SetStateAction<ClockState>>
+  ] = useState(CLOCK_STATES.INITIAL);
+  const [spinnerStyle, setSpinnerStyle]: [
+    AnimationStyle,
+    React.Dispatch<React.SetStateAction<AnimationStyle>>
+  ] = useState({});
+  const [fillerStyle, setFillerStyle]: [
+    AnimationStyle,
+    React.Dispatch<React.SetStateAction<AnimationStyle>>
+  ] = useState({});
+  const [maskStyle, setMaskStyle]: [
+    AnimationStyle,
+    React.Dispatch<React.SetStateAction<AnimationStyle>>
+  ] = useState({});
+
+  const timeCSS: string = `${convertMinutesToSeconds(timeInMinutes)}s`;
 
   let initialRender = useRef(true);
 
@@ -47,9 +64,9 @@ function Clock({ timeInMinutes }: ClockProps) {
           clockState === CLOCK_STATES.INITIAL ||
           clockState === CLOCK_STATES.OVER
         ) {
-          setSpinnerStyle({ animation: null });
-          setFillerStyle({ animation: null });
-          setMaskStyle({ animation: null });
+          setSpinnerStyle({ animation: undefined });
+          setFillerStyle({ animation: undefined });
+          setMaskStyle({ animation: undefined });
         }
       } else {
         initialRender.current = false;
