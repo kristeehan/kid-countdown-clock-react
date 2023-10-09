@@ -29,9 +29,9 @@ function Clock({ timeInMinutes }: ClockProps) {
     React.Dispatch<React.SetStateAction<AnimationStyle>>
   ] = useState({});
 
-  const timeCSS: string = `${convertMinutesToSeconds(timeInMinutes)}s`;
+  const timeCSS = `${convertMinutesToSeconds(timeInMinutes)}s`;
 
-  let initialRender = useRef(true);
+  const initialRender = useRef(true);
 
   useEffect(function addEventListeners() {
     const spinner = document.querySelector(".spinner");

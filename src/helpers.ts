@@ -1,4 +1,4 @@
-export const DEFAULT_CLOCK_TIME: string = "300s";
+export const DEFAULT_CLOCK_TIME = "300s";
 
 /**
  *  Returns a string that can be used as a CSS animation rule
@@ -8,7 +8,7 @@ export const DEFAULT_CLOCK_TIME: string = "300s";
  */
 export function getRotaRule(
   time: string = DEFAULT_CLOCK_TIME,
-  pause: boolean = false
+  pause = false
 ): string {
   return `rota ${time} linear 1` + (pause ? ` paused` : "");
 }
@@ -22,8 +22,8 @@ export function getRotaRule(
  */
 export function getOpaRule(
   time: string = DEFAULT_CLOCK_TIME,
-  reverse: boolean = false,
-  pause: boolean = false
+  reverse = false,
+  pause = false
 ): string {
   if (reverse) {
     return `opa ${time} steps(1, end) 1 reverse` + (pause ? ` paused` : "");

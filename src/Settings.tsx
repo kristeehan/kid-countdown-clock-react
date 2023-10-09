@@ -16,7 +16,7 @@ function Settings({ setTimeInMinutes }: SettingsProps) {
             value={setTimeInMinutes[0]}
             onChange={(e) => {
               e.preventDefault();
-              let value = parseInt(e.target.value);
+              const value = parseInt(e.target.value);
               if (typeof value === "number" && !isNaN(value)) {
                 setTimeInMinutes[1](value);
               } else {
