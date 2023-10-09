@@ -29,5 +29,6 @@ function KidCountDownClock() {
   );
 }
 const container = document.getElementById("root");
+if (!container) throw new Error("Could not find root element");
 const root = createRoot(container);
 root.render(<KidCountDownClock />);

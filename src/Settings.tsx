@@ -1,6 +1,10 @@
 // TODO change this to use a controlled form
 
-function Settings({ setTimeInMinutes }) {
+interface SettingsProps {
+  setTimeInMinutes: [number, React.Dispatch<React.SetStateAction<number>>];
+}
+
+function Settings({ setTimeInMinutes }: SettingsProps) {
   return (
     <div>
       <h3>Settings</h3>

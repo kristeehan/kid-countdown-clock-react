@@ -1,6 +1,11 @@
-import { CLOCK_STATES } from "./constants";
+import { CLOCK_STATES, ClockState } from "./constants";
 
-function ClockControls({ setClockState, clockState }) {
+interface ClockControlsProps {
+  setClockState: React.Dispatch<React.SetStateAction<ClockState>>;
+  clockState: string;
+}
+
+function ClockControls({ setClockState, clockState }: ClockControlsProps) {
   return (
     <div id="clock-controls">
       <div className="btn-toolbar mt-3 mb-3">

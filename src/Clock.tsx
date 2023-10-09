@@ -1,15 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import ClockControls from "./ClockControls";
 import { getRotaRule, getOpaRule, convertMinutesToSeconds } from "./helpers";
+import { CLOCK_STATES } from "./constants";
 
-const CLOCK_STATES = Object.freeze({
-  INITIAL: "INITIAL",
-  PAUSED: "PAUSED",
-  PLAYING: "PLAYING",
-  OVER: "OVER",
-});
+interface ClockProps {
+  timeInMinutes: number;
+}
 
-function Clock({ timeInMinutes }) {
+function Clock({ timeInMinutes }: ClockProps) {
   const [clockState, setClockState] = useState(CLOCK_STATES.INITIAL);
   const [spinnerStyle, setSpinnerStyle] = useState({});
   const [fillerStyle, setFillerStyle] = useState({});
@@ -23,10 +21,10 @@ function Clock({ timeInMinutes }) {
     function onAnimationEnd() {
       setClockState(CLOCK_STATES.OVER);
     }
-    spinner.addEventListener("animationend", onAnimationEnd);
+    spinner?.addEventListener("animationend", onAnimationEnd);
 
     return () => {
-      spinner.removeEventListener("animationend", onAnimationEnd);
+      spinner?.removeEventListener("animationend", onAnimationEnd);
     };
   }, []);
 
