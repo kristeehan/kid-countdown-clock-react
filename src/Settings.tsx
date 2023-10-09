@@ -10,7 +10,7 @@ function Settings({ setTimeInMinutes }: SettingsProps) {
       <h3>Settings</h3>
       <ul className="settings-list">
         <li>
-          Time in minutes:
+          Set clock time in minutes:
           <input
             type="text"
             value={setTimeInMinutes[0]}
