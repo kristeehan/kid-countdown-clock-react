@@ -1,3 +1,10 @@
+/**
+ * A countdown clock component that displays a spinning pie chart and controls to start, pause, and reset the timer.
+ *
+ * @param {ClockProps} props - The props for the component.
+ * @param {number} props.timeInMinutes - The time in minutes to count down from.
+ * @returns {JSX.Element} - The rendered component.
+ */
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import ClockControls from "./ClockControls";
 import { getRotaRule, getOpaRule, convertMinutesToSeconds } from "./helpers";
