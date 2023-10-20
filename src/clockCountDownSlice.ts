@@ -21,7 +21,6 @@ export const countDownSlice = createSlice({
   initialState,
   reducers: {
     setTime: (state: clockAppState, action: setTimeAction) => {
-      console.log(action.payload);
       state.time = action.payload;
     },
   },
