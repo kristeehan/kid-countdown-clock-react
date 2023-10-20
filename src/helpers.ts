@@ -38,3 +38,12 @@ export function getOpaRule(
 export function convertMinutesToSeconds(timeInMinutes: number): number {
   return timeInMinutes * 60;
 }
+/**
+ * Returns a string that can be used as a CSS animation time value
+ * @param timeInMinutes
+ * @returns {string} - Our css value
+ */
+export function getTimeCSSValue(timeInMinutes: number): string {
+  const timeInSeconds = convertMinutesToSeconds(timeInMinutes);
+  return `${timeInSeconds}s`;
+}

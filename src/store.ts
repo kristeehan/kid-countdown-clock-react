@@ -1,9 +1,10 @@
-import { configureStore, EnhancedStore, AnyAction } from "@reduxjs/toolkit";
-import { ThunkMiddleware } from "redux-thunk";
+import { configureStore } from "@reduxjs/toolkit";
+import { countDownSlice } from "./clockCountDownSlice";
 
-const store: EnhancedStore<any, AnyAction, [ThunkMiddleware<any, AnyAction>]> =
-  configureStore({
-    reducer: {},
-  });
+const store = configureStore({
+  reducer: {
+    countDown: countDownSlice.reducer,
+  },
+});
 
 export default store;
