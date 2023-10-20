@@ -1,5 +1,3 @@
-// TODO change this to use a controlled form
-
 interface SettingsProps {
   setTimeInMinutes: [number, React.Dispatch<React.SetStateAction<number>>];
 }
