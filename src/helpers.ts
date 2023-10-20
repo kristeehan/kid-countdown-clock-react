@@ -30,6 +30,11 @@ export function getOpaRule(
   return `opa ${time} steps(1, end) 1` + (pause ? ` paused` : "");
 }
 
+/**
+ * Takes in time in seconds and returns minutes
+ * @param timeInSeconds
+ * @returns {number} - our time in minutes
+ */
 export function convertSecondsToMinutes(timeInSeconds: number): number {
   return timeInSeconds / 60;
 }
@@ -52,6 +57,11 @@ export function getTimeCSSValue(timeInMinutes: number): string {
   return `${timeInSeconds}s`;
 }
 
+/**
+ * Takes in a CSS value like "300s" and returns that time in minutes
+ * @param timeCSSValue
+ * @returns {number} - time in minutes
+ */
 export function getTimeFromCSSValue(timeCSSValue: string): number {
   return convertSecondsToMinutes(Number(timeCSSValue.slice(0, -1)));
 }
