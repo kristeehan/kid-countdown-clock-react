@@ -4,6 +4,8 @@ import { useState } from "react";
 import { DEFAULT_CLOCK_TIME } from "./constants";
 import Clock from "./Clock";
 import Settings from "./Settings";
+import store from "./store";
+import { Provider } from "react-redux";
 
 function KidCountDownClock() {
   const headline = `When it's all red, it's time for bed!`;
@@ -14,24 +16,26 @@ function KidCountDownClock() {
   ] = useState(defaultTime);
   return (
     <BrowserRouter>
-      <h1>
-        <Link to="/" className="title">
-          {headline}
-        </Link>
-      </h1>
-      <Routes>
-        <Route path="/" element={<Clock timeInMinutes={timeInMinutes} />} />
-        <Route
-          path="/settings"
-          element={
-            <Settings setTimeInMinutes={[timeInMinutes, setTimeInMinutes]} />
-          }
-        />
-      </Routes>
-      <div className="footer">
-        <Link to="/settings">Settings</Link>
-        <Link to="/">Home</Link>
-      </div>
+      <Provider store={store}>
+        <h1>
+          <Link to="/" className="title">
+            {headline}
+          </Link>
+        </h1>
+        <Routes>
+          <Route path="/" element={<Clock timeInMinutes={timeInMinutes} />} />
+          <Route
+            path="/settings"
+            element={
+              <Settings setTimeInMinutes={[timeInMinutes, setTimeInMinutes]} />
+            }
+          />
+        </Routes>
+        <div className="footer">
+          <Link to="/settings">Settings</Link>
+          <Link to="/">Home</Link>
+        </div>
+      </Provider>
     </BrowserRouter>
   );
 }
