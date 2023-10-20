@@ -7,18 +7,18 @@
  */
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import ClockControls from "./ClockControls";
-import { getRotaRule, getOpaRule, convertMinutesToSeconds } from "./helpers";
+import { getRotaRule, getOpaRule } from "./helpers";
 import { CLOCK_STATES, ClockState } from "./constants";
-
-interface ClockProps {
-  timeInMinutes: number;
-}
-
+import { useSelector } from "react-redux";
+import { RootState } from "./clockCountDownSlice";
 interface AnimationStyle extends CSSProperties {
   animation?: string;
 }
 
-function Clock({ timeInMinutes }: ClockProps) {
+function Clock() {
+  const currentTime: string = useSelector(
+    (state: RootState) => state.countDown.time
+  );
   const [clockState, setClockState]: [
     ClockState,
     React.Dispatch<React.SetStateAction<ClockState>>
@@ -36,8 +36,6 @@ function Clock({ timeInMinutes }: ClockProps) {
     React.Dispatch<React.SetStateAction<AnimationStyle>>
   ] = useState({});
 
-  const timeCSS = `${convertMinutesToSeconds(timeInMinutes)}s`;
-
   const initialRender: React.MutableRefObject<boolean> = useRef(true);
 
   useEffect(function addEventListeners() {
@@ -51,6 +49,8 @@ function Clock({ timeInMinutes }: ClockProps) {
       spinner?.removeEventListener("animationend", onAnimationEnd);
     };
   }, []);
+
+  const timeCSS: string = currentTime;
 
   useEffect(
     function animationEffect() {

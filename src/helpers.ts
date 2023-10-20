@@ -30,6 +30,10 @@ export function getOpaRule(
   return `opa ${time} steps(1, end) 1` + (pause ? ` paused` : "");
 }
 
+export function convertSecondsToMinutes(timeInSeconds: number): number {
+  return timeInSeconds / 60;
+}
+
 /**
  * Returns the number of seconds in passed time in minutes
  * @param {number} timeInMinutes
@@ -46,4 +50,8 @@ export function convertMinutesToSeconds(timeInMinutes: number): number {
 export function getTimeCSSValue(timeInMinutes: number): string {
   const timeInSeconds = convertMinutesToSeconds(timeInMinutes);
   return `${timeInSeconds}s`;
+}
+
+export function getTimeFromCSSValue(timeCSSValue: string): number {
+  return convertSecondsToMinutes(Number(timeCSSValue.slice(0, -1)));
 }

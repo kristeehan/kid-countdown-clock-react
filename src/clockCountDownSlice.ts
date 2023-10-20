@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+export interface RootState {
+  countDown: clockAppState;
+}
+
 interface clockAppState {
   time: string;
 }
@@ -17,6 +21,7 @@ export const countDownSlice = createSlice({
   initialState,
   reducers: {
     setTime: (state: clockAppState, action: setTimeAction) => {
+      console.log(action.payload);
       state.time = action.payload;
     },
   },

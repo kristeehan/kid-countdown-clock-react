@@ -1,11 +1,15 @@
 import { useDispatch } from "react-redux";
 import { setTime } from "./clockCountDownSlice";
 import { getTimeCSSValue } from "./helpers";
-interface SettingsProps {
-  setTimeInMinutes: [number, React.Dispatch<React.SetStateAction<number>>];
-}
+import { useSelector } from "react-redux";
+import { RootState } from "./clockCountDownSlice";
+import { getTimeFromCSSValue } from "./helpers";
 
-function Settings({ setTimeInMinutes }: SettingsProps) {
+function Settings() {
+  const currentTime: string = useSelector(
+    (state: RootState) => state.countDown.time
+  );
+  const timeInMinutes: number = getTimeFromCSSValue(currentTime);
   const dispatch = useDispatch();
   return (
     <div className="container">
@@ -15,16 +19,14 @@ function Settings({ setTimeInMinutes }: SettingsProps) {
           Set clock time in minutes:
           <input
             type="text"
-            value={setTimeInMinutes[0]}
+            value={timeInMinutes}
             onChange={(e) => {
               e.preventDefault();
-              const value = parseInt(e.target.value);
-              dispatch(setTime(getTimeCSSValue(value)));
-              if (typeof value === "number" && !isNaN(value)) {
-                setTimeInMinutes[1](value);
-              } else {
-                setTimeInMinutes[1](0);
+              let value: number = parseInt(e.target.value);
+              if (isNaN(value)) {
+                value = 0;
               }
+              dispatch(setTime(getTimeCSSValue(value)));
             }}
           />
         </li>
