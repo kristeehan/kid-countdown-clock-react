@@ -7,7 +7,7 @@ interface ClockControlsProps {
 
 function ClockControls({ setClockState, clockState }: ClockControlsProps) {
   return (
-    <div id="clock-controls" className="container">
+    <div data-testid="clock-controls" id="clock-controls" className="container">
       <div className="btn-toolbar mt-3 mb-3">
         <div className="btn-group">
           <button
