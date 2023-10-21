@@ -5,6 +5,11 @@ interface ClockControlsProps {
   clockState: string;
 }
 
+/**
+ * Renders the clock controls and manages the clock state
+ * @param
+ * @returns {JSX.Element} - The rendered component.
+ */
 function ClockControls({ setClockState, clockState }: ClockControlsProps) {
   return (
     <div id="clock-controls" className="container">
