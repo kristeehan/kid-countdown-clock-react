@@ -5,6 +5,10 @@ import { useSelector } from "react-redux";
 import { RootState } from "./clockCountDownSlice";
 import { getTimeFromCSSValue } from "./helpers";
 
+/**
+ * Settings component that allows the user to set the clock time in minutes.
+ * @returns A React component that renders a form with an input field to set the clock time.
+ */
 function Settings() {
   const currentTime: string = useSelector(
     (state: RootState) => state.countDown.time
