@@ -1,10 +1,26 @@
 import { CLOCK_STATES, ClockState } from "./constants";
 
+/**
+ * Props for the ClockControls component.
+ */
 interface ClockControlsProps {
+  /**
+   * A function to set the clock state.
+   */
   setClockState: React.Dispatch<React.SetStateAction<ClockState>>;
+  /**
+   * The current clock state.
+   */
   clockState: string;
 }
 
+/**
+ * Renders the clock controls component.
+ * @param {Object} props - The component props.
+ * @param {Function} props.setClockState - The function to set the clock state.
+ * @param {string} props.clockState - The current clock state.
+ * @returns {JSX.Element} - The clock controls component.
+ */
 function ClockControls({ setClockState, clockState }: ClockControlsProps) {
   return (
     <div data-testid="clock-controls" id="clock-controls" className="container">

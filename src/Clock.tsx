@@ -15,6 +15,10 @@ interface AnimationStyle extends CSSProperties {
   animation?: string;
 }
 
+/**
+ * Clock component that displays a countdown clock with animation.
+ * @returns A React component.
+ */
 function Clock() {
   const currentTime: string = useSelector(
     (state: RootState) => state.countDown.time
