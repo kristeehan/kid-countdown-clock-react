@@ -11,6 +11,9 @@ test("it renders the clock controls", async () => {
     <ClockControls clockState={mockState} setClockState={mockSetClockState} />
   );
 
-  const clockControlsElement = clockControls.getByTestId("clock-controls");
+  const clockControlsElement = await clockControls.findByTestId(
+    "clock-controls"
+  );
+
   expect(clockControlsElement).toBeTruthy();
 });
