@@ -27,6 +27,7 @@ function ClockControls({ setClockState, clockState }: ClockControlsProps) {
       <div className="btn-toolbar mt-3 mb-3">
         <div className="btn-group">
           <button
+            data-testid="start-button"
             className={`btn btn-primary ${
               clockState === CLOCK_STATES.PLAYING ? "active" : ""
             }`}
@@ -41,6 +42,7 @@ function ClockControls({ setClockState, clockState }: ClockControlsProps) {
             Start
           </button>
           <button
+            data-testid="pause-button"
             className={`btn btn-secondary ${
               clockState === CLOCK_STATES.PAUSED ? "active" : ""
             }`}
@@ -55,6 +57,7 @@ function ClockControls({ setClockState, clockState }: ClockControlsProps) {
             Pause
           </button>
           <button
+            data-testid="reset-button"
             className="btn btn-warning"
             id="reset"
             onClick={(e) => {
