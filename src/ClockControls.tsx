@@ -42,6 +42,7 @@ function ClockControls({ setClockState, clockState }: ClockControlsProps) {
             Start
           </button>
           <button
+            data-testid="pause-button"
             className={`btn btn-secondary ${
               clockState === CLOCK_STATES.PAUSED ? "active" : ""
             }`}
@@ -56,6 +57,7 @@ function ClockControls({ setClockState, clockState }: ClockControlsProps) {
             Pause
           </button>
           <button
+            data-testid="reset-button"
             className="btn btn-warning"
             id="reset"
             onClick={(e) => {
