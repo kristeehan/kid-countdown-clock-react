@@ -2,6 +2,14 @@
 
 This project displays a circle that turns from green to red based on an amount of time (defaults to 5 minutes). This is useful for children who are more visual and understand something they can see rather than something verbal like "five more minutes until bed".
 
+## Screenshots
+
+Home
+![Hone screen with clock running ](./screenshots/screenshot-1.png)
+
+Settings
+![Settings screen with option to change time ](./screenshots/screenshot-2.png)
+
 ## Installation
 
 To install the project dependencies, run the following command:
