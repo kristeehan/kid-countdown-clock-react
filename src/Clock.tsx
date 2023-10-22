@@ -15,23 +15,23 @@ interface AnimationStyle extends CSSProperties {
  */
 function Clock() {
   const currentTime: string = useSelector(
-    (state: RootState) => state.countDown.time
+    (state: RootState) => state.countDown.time,
   );
   const [clockState, setClockState]: [
     ClockState,
-    React.Dispatch<React.SetStateAction<ClockState>>
+    React.Dispatch<React.SetStateAction<ClockState>>,
   ] = useState(CLOCK_STATES.INITIAL);
   const [spinnerStyle, setSpinnerStyle]: [
     AnimationStyle,
-    React.Dispatch<React.SetStateAction<AnimationStyle>>
+    React.Dispatch<React.SetStateAction<AnimationStyle>>,
   ] = useState({});
   const [fillerStyle, setFillerStyle]: [
     AnimationStyle,
-    React.Dispatch<React.SetStateAction<AnimationStyle>>
+    React.Dispatch<React.SetStateAction<AnimationStyle>>,
   ] = useState({});
   const [maskStyle, setMaskStyle]: [
     AnimationStyle,
-    React.Dispatch<React.SetStateAction<AnimationStyle>>
+    React.Dispatch<React.SetStateAction<AnimationStyle>>,
   ] = useState({});
 
   const initialRender: React.MutableRefObject<boolean> = useRef(true);
@@ -77,20 +77,32 @@ function Clock() {
         initialRender.current = false;
       }
     },
-    [clockState, timeCSS]
+    [clockState, timeCSS],
   );
 
   return (
-    <div id="clock-container" className="container">
+    <div
+      data-testid="clock-container"
+      id="clock-container"
+      className="container"
+    >
       <div id="clock" data-test-current-state={clockState}>
         <div
           className={`wrapper ${
             clockState === CLOCK_STATES.OVER ? "time-over" : ""
           }`}
         >
-          <div className="spinner pie" style={spinnerStyle}></div>
-          <div className="filler pie" style={fillerStyle}></div>
-          <div className="mask" style={maskStyle}></div>
+          <div
+            data-testid="spinner"
+            className="spinner pie"
+            style={spinnerStyle}
+          ></div>
+          <div
+            data-testid="filler"
+            className="filler pie"
+            style={fillerStyle}
+          ></div>
+          <div data-testid="mask" className="mask" style={maskStyle}></div>
         </div>
         <ClockControls setClockState={setClockState} clockState={clockState} />{" "}
       </div>
