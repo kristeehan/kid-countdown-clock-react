@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, CSSProperties } from "react";
 import ClockControls from "./ClockControls";
-import { getRotaRule, getOpaRule } from "./helpers";
+import { getRotaRule, getOpaRule, formatTime } from "./helpers";
 import { CLOCK_STATES, ClockState } from "./constants";
 import { useSelector } from "react-redux";
 import { RootState } from "./clockCountDownSlice";
@@ -33,8 +33,10 @@ function Clock() {
     AnimationStyle,
     React.Dispatch<React.SetStateAction<AnimationStyle>>,
   ] = useState({});
+  const [timeRemaining, setTimeRemaining] = useState(parseInt(currentTime, 10));
 
   const initialRender: React.MutableRefObject<boolean> = useRef(true);
+  const formatTimeTimeout: React.MutableRefObject<number> = useRef(Infinity);
 
   useEffect(function addEventListeners() {
     const spinner = document.querySelector(".spinner");
@@ -80,6 +82,36 @@ function Clock() {
     [clockState, timeCSS],
   );
 
+  useEffect(
+    function timerHandler() {
+      if (clockState === CLOCK_STATES.PLAYING) {
+        formatTimeTimeout.current = setInterval(() => {
+          setTimeRemaining((prevTimeRemaining) => {
+            if (prevTimeRemaining === 0) {
+              setClockState(CLOCK_STATES.OVER);
+              return 0;
+            }
+            return prevTimeRemaining - 1;
+          });
+        }, 1000) as unknown as number;
+      } else if (formatTimeTimeout.current) {
+        clearInterval(formatTimeTimeout.current);
+      }
+
+      if (
+        clockState === CLOCK_STATES.INITIAL ||
+        clockState === CLOCK_STATES.OVER
+      ) {
+        setTimeRemaining(parseInt(currentTime, 10));
+      }
+
+      return () => {
+        clearInterval(formatTimeTimeout.current);
+      };
+    },
+    [clockState, currentTime],
+  );
+
   return (
     <div
       data-testid="clock-container"
@@ -103,6 +135,9 @@ function Clock() {
             style={fillerStyle}
           ></div>
           <div data-testid="mask" className="mask" style={maskStyle}></div>
+        </div>
+        <div className="text-center time-remaining">
+          <p className="fs-1">{formatTime(timeRemaining)}</p>
         </div>
         <ClockControls setClockState={setClockState} clockState={clockState} />{" "}
       </div>
