@@ -137,11 +137,10 @@ function Clock() {
           ></div>
           <div data-testid="mask" className="mask" style={maskStyle}></div>
         </div>
-        <div className="time-remaining">{formatTime(timeRemaining)}</div>
-        <ClockControls
-          setClockState={setClockState}
-          clockState={clockState}
-        />{" "}
+        <div className="text-center time-remaining">
+          <p className="fs-1">{formatTime(timeRemaining)}</p>
+        </div>
+        <ClockControls setClockState={setClockState} clockState={clockState} />{" "}
       </div>
     </div>
   );

@@ -131,6 +131,10 @@ h1 {
   text-align: center;
 }
 
+.time-remaining {
+  margin: 8px 0;
+}
+
 /* Mobile styles */
 @media (max-width: 600px) {
   body {
