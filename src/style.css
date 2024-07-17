@@ -143,6 +143,7 @@ h1 {
 
   h1 {
     font-size: 1.5rem;
+    margin-top: 72px;
   }
 
   .wrapper {
@@ -152,5 +153,6 @@ h1 {
     background: green;
     border-radius: 50%;
     box-sizing: border-box;
+    margin-top: 24px;
   }
 }
