@@ -127,3 +127,19 @@ h1 {
   flex-basis: 100%;
   text-align: center;
 }
+
+/* Mobile styles */
+@media (max-width: 600px) {
+  body {
+    margin: 2% 0;
+  }
+
+  .wrapper {
+    width: 350px;
+    height: 350px;
+    position: relative;
+    background: green;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+}
