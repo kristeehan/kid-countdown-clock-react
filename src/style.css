@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  font-size: 16px;
 }
 *,
 *::before,
@@ -14,6 +15,8 @@ body {
 
 h1 {
   text-align: center;
+  font-size: 2rem;
+  margin-bottom: 8px;
 }
 
 .container {
@@ -132,6 +135,10 @@ h1 {
 @media (max-width: 600px) {
   body {
     margin: 2% 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
   }
 
   .wrapper {

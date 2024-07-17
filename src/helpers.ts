@@ -7,7 +7,7 @@ import { DEFAULT_CLOCK_TIME_CSS } from "./constants";
  */
 export function getRotaRule(
   time: string = DEFAULT_CLOCK_TIME_CSS,
-  pause = false
+  pause = false,
 ): string {
   return `rota ${time} linear 1` + (pause ? ` paused` : "");
 }
@@ -22,7 +22,7 @@ export function getRotaRule(
 export function getOpaRule(
   time: string = DEFAULT_CLOCK_TIME_CSS,
   reverse = false,
-  pause = false
+  pause = false,
 ): string {
   if (reverse) {
     return `opa ${time} steps(1, end) 1 reverse` + (pause ? ` paused` : "");
@@ -64,4 +64,14 @@ export function getTimeCSSValue(timeInMinutes: number): string {
  */
 export function getTimeFromCSSValue(timeCSSValue: string): number {
   return convertSecondsToMinutes(Number(timeCSSValue.slice(0, -1)));
+}
+
+export function formatTime(seconds: number): string {
+  const minutes = Math.floor(seconds / 60);
+  const remainingSeconds = seconds % 60;
+  // Pad the seconds with a leading zero if necessary
+  const paddedSeconds =
+    remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds;
+
+  return `${minutes}:${paddedSeconds}`;
 }
