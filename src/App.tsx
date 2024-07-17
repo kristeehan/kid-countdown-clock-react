@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { useEffect } from "react";
 import Clock from "./Clock";
 import Settings from "./Settings";
 import store from "./store";
@@ -8,6 +9,13 @@ import { Provider } from "react-redux";
 
 function KidCountDownClock() {
   const headline = `When it's all red, it's time for bed!`;
+  useEffect(() => {
+    const $navbar = document.querySelector(".navbar-nav");
+    const $closeNavButton = document.getElementById("close-nav-button");
+    $navbar?.addEventListener("click", function () {
+      $closeNavButton?.click();
+    });
+  }, []);
   return (
     <BrowserRouter>
       <Provider store={store}>
@@ -36,6 +44,7 @@ function KidCountDownClock() {
             >
               <div className="offcanvas-header">
                 <button
+                  id="close-nav-button"
                   type="button"
                   className="btn-close"
                   data-bs-dismiss="offcanvas"
