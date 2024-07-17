@@ -72,10 +72,7 @@ function KidCountDownClock() {
           <Route path="/" element={<Clock />} />
           <Route path="/settings" element={<Settings />} />
         </Routes>
-        <div className="footer">
-          <Link to="/settings">Settings</Link>
-          <Link to="/">Home</Link>
-        </div>
+        <div className="footer"></div>
       </Provider>
     </BrowserRouter>
   );

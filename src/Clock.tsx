@@ -91,10 +91,9 @@ function Clock() {
               setClockState(CLOCK_STATES.OVER);
               return 0;
             }
-            console.log(formatTime(prevTimeRemaining - 1));
             return prevTimeRemaining - 1;
           });
-        }, 1000);
+        }, 1000) as unknown as number;
       } else if (formatTimeTimeout.current) {
         clearInterval(formatTimeTimeout.current);
       }
